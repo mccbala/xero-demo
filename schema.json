@@ -1,0 +1,69 @@
+[
+    {
+        "name": "date",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "log_type",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "level",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "account",
+        "type": "INT64",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "details",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "firstname",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "lastname",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "plan",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "activity",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "change_date",
+                "type": "TIMESTAMP",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "from",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "to",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }           
+        ]
+    }
+]
