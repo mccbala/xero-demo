@@ -12,7 +12,7 @@ def transform_json(json_string):
         json_object['details'] = {
             'firstname': json_object['firstname'],
             'lastname': json_object['lastname'],
-            'address': json_object['address'],
+            'address': json_object['address'].strip("'"),
             'plan': json_object['plan']
         }
         json_object.pop('firstname')
@@ -40,5 +40,8 @@ if __name__ == "__main__":
         with open(OUTFILE, "a") as w:
             w.write("\n".join(new_json_lines)+"\n")
             print(f"{logfile} file transformed")
+    print(f"Deleting the old table activity_log")
+    subprocess.check_output(["bq", "rm", "-f", "-t", "xero-demo-mccbala:hubdoc.activity_log"])
     print(f"Uploading data to Bigquery. Data File: {OUTFILE}. Schema File: schema.json")
-    subprocess.Popen(["bq", "load", "--source_format=NEWLINE_DELIMITED_JSON", "xero-demo-mccbala:hubdoc.activity_log", OUTFILE, "./schema.json"])
+    subprocess.check_output(["bq", "load", "--source_format=NEWLINE_DELIMITED_JSON", "xero-demo-mccbala:hubdoc.activity_log", OUTFILE, "./schema.json"])
+	print("Upload complete.\n")
